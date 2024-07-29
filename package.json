@@ -1,10 +1,15 @@
 {
 	"name": "code-snippet-helper",
-	"displayName": "code-snippet",
-	"description": "code-snippet",
+	"displayName": "代码片段助手(code-snippet-helper)",
+	"description": "帮助你管理代码片段",
 	"publisher": "dbfu321",
 	"icon": "code.png",
-	"version": "0.0.1",
+	"version": "0.0.2",
+	"keywords": ["code-snippet", "snippet", "代码片段", "代码片段助手"],
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/dbfu/code-snippet.git"
+  },
 	"engines": {
 		"vscode": "^1.91.0"
 	},
