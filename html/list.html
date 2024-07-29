@@ -131,7 +131,6 @@
 <body>
   <div class="box">
     <div class="list-box">
-
     </div>
     <div class="code-box">
       <pre><code id="code"></code></pre>
@@ -161,13 +160,12 @@
         listItem.dataset.id = item.id;
 
         const title = document.createElement('div');
-        title.innerText = item.name;
+        title.innerText = item.prefix;
         title.className = 'title';
 
         const languageBox = document.createElement('div');
-
         const language = document.createElement('span');
-        language.innerText = item.type;
+        language.innerText = item.scope;
         language.className = 'tag';
 
         languageBox.appendChild(language);
@@ -201,22 +199,23 @@
       renderListItem();
     })
 
+    // 监听代码片段点击事件，预览当前代码片段代码
     document.querySelector('.list-box').addEventListener('click', e => {
       let id;
+
       if (e.target.className === 'list-item') {
         id = e.target.dataset.id;
       } else if (e.target.parentElement.className === 'list-item') {
         id = e.target.parentElement.dataset.id;
       }
 
-
       if (!id) return;
 
+      const { body, scope: type } = codes.find(o => o.id === +id) || {};
 
-      const { code, type } = codes.find(o => o.id === +id) || {};
+      if (!body?.length) return;
 
-
-      if (!code) return;
+      const code = body.join('\n');
 
       let result;
 
@@ -231,10 +230,8 @@
       document.querySelector('.button-box').style.display = 'flex';
       curId = +id;
     })
-    document.querySelector('.insert-btn').addEventListener('click', function () {
-      vscode.postMessage({ type: 'insert', code: curCode })
-    })
 
+    // 监听复制按钮点击事件，将代码片段复制到剪贴板
     document.querySelector('.copy-btn').addEventListener('click', function () {
       const customContent = curCode;
 
@@ -253,6 +250,12 @@
       showMessage()
     });
 
+    // 监听插入按钮点击事件，将代码片段插入到当前编辑器中
+    document.querySelector('.insert-btn').addEventListener('click', function () {
+      vscode.postMessage({ type: 'insert', code: curCode })
+    });
+
+    // 监听删除按钮点击事件，将代码片段从列表中移除
     document.querySelector('.delete-btn').addEventListener('click', function () {
       vscode.postMessage({ type: 'delete', id: curId });
 

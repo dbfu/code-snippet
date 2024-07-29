@@ -66,16 +66,20 @@
     let language;
     let code;
 
+    // 监听vscode发送过来的消息
     window.addEventListener('message', e => {
+      // 高亮代码
       const result = hljs.highlightAuto(e.data);
-
+     
       language = result.language;
       code = e.data;
-
+      // 渲染高亮代码
       document.querySelector('#code').innerHTML = result.value;
     })
 
+    // 监听保存按钮点击事件
     document.querySelector('.btn').addEventListener('click', () => {
+      // 发送保存消息
       vscode.postMessage({ type: 'save', code, language });
     })
   </script>

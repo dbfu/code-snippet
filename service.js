@@ -2,88 +2,59 @@ const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path');
 
-
-const FILE_NAME = 'code-snippet.json'
-
+const FILE_PATH = 'snippets/snippets.code-snippets'
 
 const save = async (name, type, code, context) => {
-  let filePath = path.join(context.extensionPath, FILE_NAME);
-
-  let codes = [];
-
-  if (fs.existsSync(filePath)) {
-    const data = fs.readFileSync(filePath, 'utf-8');
-    try {
-      codes = JSON.parse(data);
-    } catch (e) {
-      codes = [];
-    }
-  }
-
-  const id = new Date().getTime();
-
-  codes.push({
-    id,
-    name,
-    code,
-    type,
-    create_date: new Date().toLocaleString()
-  })
-  fs.writeFileSync(filePath, JSON.stringify(codes), 'utf-8');
-
-  // 插入代码片段
-  filePath = path.join(context.extensionPath, 'snippets/snippets.code-snippets');
-
+  // 获取代码片段存放文件地址
+  const filePath = path.join(context.extensionPath, FILE_PATH);
+  // 读取文件内容
   const data = fs.readFileSync(filePath, 'utf-8');
-
+  // 解析文件内容
   const newData = JSON.parse(data);
 
   // 把代码转换为body
-
   const codeArr = code.split('\n');
 
+  const id = new Date().getTime();
+
+  // 把新的代码片段写入文件
   newData[`code-snippets-${id}`] = {
-    "scope": type,
-    "prefix": name,
-    "body": codeArr,
-    "description": name
+    id,
+    scope: type,
+    prefix: name,
+    body: codeArr,
+    description: name,
+    create_date: new Date().toLocaleDateString(),
   }
 
+  // 写入文件
   fs.writeFileSync(filePath, JSON.stringify(newData), 'utf-8');
 
+  // 提示
   const value = await vscode.window.showInformationMessage('保存成功，代码片段需要刷新当前窗口才能生效，是否刷新？', { modal: true }, '是', '否');
   if (value === '是') {
+    // 刷新窗口
     vscode.commands.executeCommand('workbench.action.reloadWindow');
   }
 }
 
-const getList = (context) => {
-  const filePath = path.join(context.extensionPath, FILE_NAME);
+const getCodeSnippets = (context) => {
+  // 获取代码片段存放文件地址
+  const filePath = path.join(context.extensionPath, FILE_PATH);
+  // 读取文件内容
   if (fs.existsSync(filePath)) {
     const data = fs.readFileSync(filePath, 'utf-8');
-    return JSON.parse(data);
+    // 解析文件内容
+    return Object.values(JSON.parse(data));
   }
   return [];
 }
 
 const deleteCode = (id, context) => {
-  let filePath = path.join(context.extensionPath, FILE_NAME);
+  let filePath = path.join(context.extensionPath, FILE_PATH);
   if (fs.existsSync(filePath)) {
-    let codes = [];
-    let data = fs.readFileSync(filePath, 'utf-8');
-    try {
-      codes = JSON.parse(data);
-    }
-    catch (e) {
-      codes = [];
-    }
-    const newCodes = codes.filter(item => item.id !== id);
-    fs.writeFileSync(filePath, JSON.stringify(newCodes), 'utf-8');
-
-
     // 删除代码片段
-    filePath = path.join(context.extensionPath, 'snippets/snippets.code-snippets');
-    data = fs.readFileSync(filePath, 'utf-8');
+    const data = fs.readFileSync(filePath, 'utf-8');
     const newData = JSON.parse(data);
     delete newData[`code-snippets-${id}`];
     fs.writeFileSync(filePath, JSON.stringify(newData), 'utf-8');
@@ -96,7 +67,6 @@ const deleteCode = (id, context) => {
 
 const getLanguageList = () => {
   return [
-    "default",
     "bash",
     "c",
     "cpp",
@@ -138,8 +108,8 @@ const getLanguageList = () => {
 
 module.exports = {
   save,
-  getList,
+  getCodeSnippets,
   deleteCode,
-  FILE_NAME,
+  FILE_PATH,
   getLanguageList,
 }

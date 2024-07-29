@@ -19,11 +19,6 @@
 	"activationEvents": [],
 	"main": "./extension.js",
 	"contributes": {
-		"snippets": [
-			{
-				"path": "./snippets/snippets.code-snippets"
-			}
-		],
 		"submenus": [
 			{
 				"id": "code-snippet",
@@ -78,7 +73,12 @@
 					"group": "code-snippet@004"
 				}
 			]
-		}
+		},
+		"snippets": [
+			{
+				"path": "./snippets/snippets.code-snippets"
+			}
+		]
 	},
 	"scripts": {
 		"lint": "eslint .",
