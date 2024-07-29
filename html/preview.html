@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/atom-one-dark.min.css"
+    integrity="sha512-Jk4AqjWsdSzSWCSuQTfYRIF84Rq/eV0G2+tu07byYwHcbTGfdmLrHjUSwvzp5HvbiqK4ibmNwdcG49Y5RGYPTg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/javascript.min.js"
+    integrity="sha512-XrpvbK+zc0wErJG1VptH0H4w4zyiniHOBR35DJ1VISA+cqYxhksvqFwZk0M8lX9ylaIjTXoMYolOPb93zdrGpg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    code {
+      background-color: transparent !important;
+      line-height: 1.5;
+      font-size: 16px;
+    }
+
+    .button-box {
+      position: fixed;
+      right: 10px;
+      top: 16px;
+    }
+
+    .btn {
+      outline: none;
+      position: relative;
+      display: inline-block;
+      font-weight: 400;
+      white-space: nowrap;
+      text-align: center;
+      background-image: none;
+      background-color: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all .2s cubic-bezier(.645, .045, .355, 1);
+      user-select: none;
+      touch-action: manipulation;
+      line-height: 1.5714285714285714;
+      color: rgba(0, 0, 0, .88);
+      font-size: 14px;
+      height: 32px;
+      padding: 4px 15px;
+      border-radius: 6px;
+      color: #fff;
+      background-color: #1677ff;
+      box-shadow: 0 2px 0 rgba(5, 145, 255, .1);
+    }
+
+    .btn:hover {
+      background-color: #1677ffee;
+    }
+  </style>
+</head>
+
+<body>
+  <pre><code id="code"></code></pre>
+  <div class="button-box">
+    <button class="btn">保存当前代码片段</button>
+  </div>
+  <script>
+    const vscode = acquireVsCodeApi();
+    let language;
+    let code;
+
+    window.addEventListener('message', e => {
+      const result = hljs.highlightAuto(e.data);
+
+      language = result.language;
+      code = e.data;
+
+      document.querySelector('#code').innerHTML = result.value;
+    })
+
+    document.querySelector('.btn').addEventListener('click', () => {
+      vscode.postMessage({ type: 'save', code, language });
+    })
+  </script>
+</body>
+
+</html>

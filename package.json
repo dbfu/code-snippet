@@ -1,0 +1,94 @@
+{
+	"name": "code-snippet-helper",
+	"displayName": "code-snippet",
+	"description": "code-snippet",
+	"publisher": "dbfu321",
+	"icon": "code.png",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.91.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [],
+	"main": "./extension.js",
+	"contributes": {
+		"snippets": [
+			{
+				"path": "./snippets/snippets.code-snippets"
+			}
+		],
+		"submenus": [
+			{
+				"id": "code-snippet",
+				"label": "代码片段"
+			}
+		],
+		"commands": [
+			{
+				"command": "code-snippet.save",
+				"title": "保存代码片段"
+			},
+			{
+				"command": "code-snippet.insert",
+				"title": "插入代码片段"
+			},
+			{
+				"command": "code-snippet.import",
+				"title": "导入配置"
+			},
+			{
+				"command": "code-snippet.export",
+				"title": "导出配置"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"submenu": "code-snippet",
+					"group": "code-snippet@001",
+					"when": "editorTextFocus"
+				}
+			],
+			"code-snippet": [
+				{
+					"when": "editorHasSelection",
+					"command": "code-snippet.save",
+					"group": "code-snippet@001"
+				},
+				{
+					"when": "editorFocus",
+					"command": "code-snippet.insert",
+					"group": "code-snippet@002"
+				},
+				{
+					"when": "editorFocus",
+					"command": "code-snippet.import",
+					"group": "code-snippet@003"
+				},
+				{
+					"when": "editorFocus",
+					"command": "code-snippet.export",
+					"group": "code-snippet@004"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.91.0",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.0",
+		"@types/node": "14.x",
+		"eslint": "^8.9.0",
+		"glob": "^7.2.0",
+		"mocha": "^9.2.1",
+		"typescript": "^4.5.5",
+		"@vscode/test-electron": "^2.1.2"
+	}
+}
