@@ -1,0 +1,294 @@
+{
+	"name": "code-snippet-helper",
+	"displayName": "代码片段助手(code-snippet-helper)",
+	"description": "帮助你管理代码片段",
+	"publisher": "dbfu321",
+	"icon": "code.png",
+	"version": "1.0.0",
+	"keywords": [
+		"code-snippet",
+		"snippet",
+		"代码片段",
+		"代码片段助手"
+	],
+	"repository": {
+		"type": "github",
+		"url": "https://github.com/dbfu/code-snippet.git"
+	},
+	"engines": {
+		"vscode": "^1.91.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./src/extension.js",
+	"contributes": {
+		"submenus": [
+			{
+				"id": "code-snippet",
+				"label": "代码片段"
+			}
+		],
+		"commands": [
+			{
+				"command": "code-snippet.editSelectionCode",
+				"title": "编辑当前选中代码"
+			},
+			{
+				"command": "code-snippet.createCodeSnippet",
+				"title": "保存当前文件"
+			},
+			{
+				"command": "code-snippet.createCodeSnippetBySelectionCode",
+				"title": "保存当前选中代码"
+			},
+			{
+				"command": "code-snippet.createCodeSnippetBySelectionCode",
+				"title": "保存当前选中代码"
+			},
+			{
+				"command": "code-snippet.public.genCodeSnippetFile",
+				"title": "生成代码片段文件",
+				"icon": "$(cloud-download)"
+			},
+			{
+				"command": "code-snippet.public.refresh",
+				"title": "刷新",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "code-snippet.personal.genCodeSnippetFile",
+				"title": "生成代码片段文件",
+				"icon": "$(cloud-download)"
+			},
+			{
+				"command": "code-snippet.personal.refresh",
+				"title": "刷新",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "code-snippet.team.genCodeSnippetFile",
+				"title": "生成代码片段文件",
+				"icon": "$(cloud-download)"
+			},
+			{
+				"command": "code-snippet.team.refresh",
+				"title": "刷新",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "code-snippet.copy",
+				"title": "复制代码片段到剪切板",
+				"icon": "$(copy)"
+			},
+			{
+				"command": "code-snippet.insert",
+				"title": "插入代码片段到光标位置",
+				"icon": "$(insert)"
+			},
+			{
+				"command": "code-snippet.delete",
+				"title": "删除",
+				"icon": "$(trash)"
+			},
+			{
+				"command": "code-snippet.public",
+				"title": "公开",
+				"icon": "$(cloud-upload)"
+			},
+			{
+				"command": "code-snippet.notPublic",
+				"title": "不公开",
+				"icon": "$(cloud-download)"
+			}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "code-snippet.public.refresh",
+					"group": "navigation",
+					"when": "view == 'code-snippet.public'"
+				},
+				{
+					"command": "code-snippet.public.genCodeSnippetFile",
+					"group": "navigation",
+					"when": "view == 'code-snippet.public'"
+				},
+				{
+					"command": "code-snippet.personal.refresh",
+					"group": "navigation",
+					"when": "view == 'code-snippet.personal'"
+				},
+				{
+					"command": "code-snippet.personal.genCodeSnippetFile",
+					"group": "navigation",
+					"when": "view == 'code-snippet.personal'"
+				},
+				{
+					"command": "code-snippet.team.refresh",
+					"group": "navigation",
+					"when": "view == 'code-snippet.team'"
+				},
+				{
+					"command": "code-snippet.team.genCodeSnippetFile",
+					"group": "navigation",
+					"when": "view == 'code-snippet.team'"
+				}
+			],
+			"editor/context": [
+				{
+					"submenu": "code-snippet",
+					"group": "code-snippet@001",
+					"when": "editorTextFocus && personalToken"
+				}
+			],
+			"code-snippet": [
+				{
+					"when": "editorHasSelection",
+					"command": "code-snippet.editSelectionCode",
+					"group": "code-snippet@001"
+				},
+				{
+					"command": "code-snippet.createCodeSnippet",
+					"group": "code-snippet@001"
+				},
+				{
+					"command": "code-snippet.createCodeSnippetBySelectionCode",
+					"group": "code-snippet@001",
+					"when": "editorHasSelection"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "code-snippet.copy",
+					"when": "viewItem == publicCodeSnippetItem || viewItem == personalCodeSnippetItemPublic || viewItem == personalCodeSnippetItemNotPublic",
+					"group": "inline@001"
+				},
+				{
+					"command": "code-snippet.insert",
+					"when": "viewItem == publicCodeSnippetItem || viewItem == personalCodeSnippetItemPublic || viewItem == personalCodeSnippetItemNotPublic",
+					"group": "inline@002"
+				},
+				{
+					"command": "code-snippet.public",
+					"when": "viewItem == personalCodeSnippetItemNotPublic",
+					"group": "inline@003"
+				},
+				{
+					"command": "code-snippet.notPublic",
+					"when": "viewItem == personalCodeSnippetItemPublic",
+					"group": "inline@004"
+				},
+				{
+					"command": "code-snippet.delete",
+					"when": "viewItem == personalCodeSnippetItemPublic || viewItem == personalCodeSnippetItemNotPublic",
+					"group": "inline@005"
+				}
+			]
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "code-snippet",
+					"title": "代码片段",
+					"icon": "code.png"
+				}
+			]
+		},
+		"views": {
+			"code-snippet": [
+				{
+					"id": "code-snippet.public",
+					"name": "公开"
+				},
+				{
+					"id": "code-snippet.personal",
+					"name": "个人"
+				},
+				{
+					"id": "code-snippet.team",
+					"name": "团队"
+				}
+			]
+		},
+		"snippets": [
+			{
+				"path": "./snippets/public.snippets.code-snippets"
+			},
+			{
+				"path": "./snippets/personal.snippets.code-snippets"
+			},
+			{
+				"path": "./snippets/team.snippets.code-snippets"
+			}
+		],
+		"configuration": [
+			{
+				"title": "code-snippet",
+				"properties": {
+					"personal.gitee.token": {
+						"type": "string",
+						"description": "个人gitee令牌"
+					},
+					"team.gitee.token": {
+						"type": "array",
+						"description": "团队gitee令牌",
+						"properties": {
+							"name": {
+								"type": "string",
+								"description": "团队名称"
+							},
+							"token": {
+								"type": "string",
+								"description": "团队令牌"
+							}
+						}
+					},
+					"openai": {
+						"type": "object",
+						"properties": {
+							"apiKey": {
+								"type": "string",
+								"description": "openai api密钥"
+							},
+							"model": {
+								"type": "string",
+								"description": "openai 模型",
+								"default": "gpt-3.5-turbo"
+							},
+							"baseUrl": {
+								"type": "string",
+								"description": "openai api地址",
+								"default": "https://api.openai.com/v1"
+							}
+						}
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.0",
+		"@types/node": "14.x",
+		"@types/vscode": "^1.96.0",
+		"@vscode/test-electron": "^2.1.2",
+		"eslint": "^8.9.0",
+		"glob": "^7.2.0",
+		"mocha": "^9.2.1",
+		"typescript": "^4.5.5"
+	},
+	"dependencies": {
+		"axios": "^1.7.9",
+		"dotenv": "^16.4.7",
+		"openai": "^4.78.1"
+	}
+}
