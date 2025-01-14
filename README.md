@@ -111,4 +111,4 @@ https://raw.githubusercontent.com/dbfu/code-snippet/main/images/image.png)
 
 如果团队里的代码片段有更新，需要自己手动生成一下代码片段文件。
 
-![alt text](https://raw.githubusercontent.com/dbfu/code-snippet/main/image-16.png)
+![alt text](https://raw.githubusercontent.com/dbfu/code-snippet/main/images/image-16.png)
