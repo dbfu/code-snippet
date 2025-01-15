@@ -10,8 +10,7 @@
 
 代码片段代码格式如下，如果不同工具转换，自己手动去写，还是很麻烦的。
 
-![alt text](
-https://raw.githubusercontent.com/dbfu/code-snippet/main/images/image-19.png)
+![alt text](https://raw.githubusercontent.com/dbfu/code-snippet/main/images/image-19.png)
 
 ## 团队共享代码片段
 
@@ -31,8 +30,7 @@ https://raw.githubusercontent.com/dbfu/code-snippet/main/images/image-19.png)
 
 安装完插件后，会自动创建内置公开代码片段文件，创建成功后，需要刷新一下，代码片段快捷键才会生效。
 
-![alt text](
-https://raw.githubusercontent.com/dbfu/code-snippet/main/images/image.png)
+![alt text](https://raw.githubusercontent.com/dbfu/code-snippet/main/images/image.png)
 
 在js文件中输入cs，可以弹出代码片段列表，选择一个代码片段，回车后会把代码片段插入到光标处。
 

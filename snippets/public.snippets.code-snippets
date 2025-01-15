@@ -1,0 +1,283 @@
+{
+  "jgb1ldrzaq02pfhk9we4x97": {
+    "id": "jgb1ldrzaq02pfhk9we4x97",
+    "scope": "javascript",
+    "prefix": "cs_公开_随机打乱数组，返回新数组",
+    "body": [
+      "function shuffleArray(arr) {",
+      "  const newArr = [...arr];",
+      "  for (let i = newArr.length - 1; i > 0; i--) {",
+      "    const j = Math.floor(Math.random() * (i + 1));",
+      "    [newArr[i], newArr[j]] = [newArr[j], newArr[i]];",
+      "  }",
+      "  return newArr;",
+      "}"
+    ],
+    "description": "随机打乱数组，返回新数组",
+    "create_date": "2025/1/15"
+  },
+  "l1zx5bsdw6p297oqicteu75": {
+    "id": "l1zx5bsdw6p297oqicteu75",
+    "scope": "javascript",
+    "prefix": "cs_公开_检查日期是否有效",
+    "body": [
+      "const isDateValid = (...val) => !Number.isNaN(new Date(...val).valueOf());",
+      "",
+      "isDateValid(\"December 17, 1995 03:24:00\");  // true"
+    ],
+    "description": "检查日期是否有效",
+    "create_date": "2025/1/15"
+  },
+  "obtr97xmug6c310w52sqv73": {
+    "id": "obtr97xmug6c310w52sqv73",
+    "scope": "javascript",
+    "prefix": "cs_公开_检测当前浏览器是否是黑暗模式",
+    "body": [
+      "const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches",
+      "",
+      "console.log(isDarkMode)"
+    ],
+    "description": "检测当前浏览器是否是黑暗模式",
+    "create_date": "2025/1/15"
+  },
+  "egdacl4pfrb81h23s7jiy76": {
+    "id": "egdacl4pfrb81h23s7jiy76",
+    "scope": "javascript",
+    "prefix": "cs_公开_从数组中移除重复项",
+    "body": [
+      "const removeDuplicates = (arr) => [...new Set(arr)];",
+      "",
+      "console.log(removeDuplicates([1, 2, 2, 3, 3, 4, 4, 5, 5, 6]));"
+    ],
+    "description": "从数组中移除重复项",
+    "create_date": "2025/1/15"
+  },
+  "gzuis2fedwqbyc56m98lh36": {
+    "id": "gzuis2fedwqbyc56m98lh36",
+    "scope": "javascript",
+    "prefix": "cs_公开_查找日期位于一年中的第几天",
+    "body": [
+      "const dayOfYear = (date) => Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);",
+      "",
+      "dayOfYear(new Date());   // 307"
+    ],
+    "description": "查找日期位于一年中的第几天",
+    "create_date": "2025/1/15"
+  },
+  "rpv6ac280gtbnqyk3juoz25": {
+    "id": "rpv6ac280gtbnqyk3juoz25",
+    "scope": "javascript",
+    "prefix": "cs_公开_字符串首字母大写",
+    "body": [
+      "const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)",
+      "",
+      "capitalize(\"hello world\")  // Hello world"
+    ],
+    "description": "字符串首字母大写",
+    "create_date": "2025/1/15"
+  },
+  "if234p5ndcyhu7tzwjo1x41": {
+    "id": "if234p5ndcyhu7tzwjo1x41",
+    "scope": "javascript",
+    "prefix": "cs_公开_ 将RGB转化为十六机制",
+    "body": [
+      "const rgbToHex = (r, g, b) => \"#\" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);",
+      "",
+      "rgbToHex(255, 255, 255);  // '#ffffff'"
+    ],
+    "description": " 将RGB转化为十六机制",
+    "create_date": "2025/1/15"
+  },
+  "nhtpe9zg7yc4osdk86r2v68": {
+    "id": "nhtpe9zg7yc4osdk86r2v68",
+    "scope": "javascript",
+    "prefix": "cs_公开_延时函数",
+    "body": [
+      "const delay = ms => new Promise(resolve => setTimeout(resolve, ms));"
+    ],
+    "description": "延时函数",
+    "create_date": "2025/1/15"
+  },
+  "bvwafsjdzm3ie94nyqxlc39": {
+    "id": "bvwafsjdzm3ie94nyqxlc39",
+    "scope": "javascript",
+    "prefix": "cs_公开_随机字符串",
+    "body": [
+      "const randomString = () => Math.random().toString(36).slice(2);",
+      "",
+      "randomString();"
+    ],
+    "description": "随机字符串",
+    "create_date": "2025/1/15"
+  },
+  "mhzcjx2qgewld69n5kpfo64": {
+    "id": "mhzcjx2qgewld69n5kpfo64",
+    "scope": "javascript",
+    "prefix": "cs_公开_获取两个整数之间的随机整数",
+    "body": [
+      "const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);",
+      "",
+      "random(1, 50);"
+    ],
+    "description": "获取两个整数之间的随机整数",
+    "create_date": "2025/1/15"
+  },
+  "zh5a2y41l3mg6jp0enxut41": {
+    "id": "zh5a2y41l3mg6jp0enxut41",
+    "scope": "javascript",
+    "prefix": "cs_公开_平滑滚动到页面顶部",
+    "body": [
+      "window.scrollTo({ top: 0, behavior: 'smooth' });"
+    ],
+    "description": "平滑滚动到页面顶部",
+    "create_date": "2025/1/15"
+  },
+  "sh2wbe690npg4r1f3tcoi55": {
+    "id": "sh2wbe690npg4r1f3tcoi55",
+    "scope": "javascript",
+    "prefix": "cs_公开_判断当前是否是苹果设备",
+    "body": [
+      "const isAppleDevice = () => /Mac|iPod|iPhone|iPad/.test(navigator.platform);",
+      "",
+      "isAppleDevice();"
+    ],
+    "description": "判断当前是否是苹果设备",
+    "create_date": "2025/1/15"
+  },
+  "m07ui4cpazd82wjg6nvso17": {
+    "id": "m07ui4cpazd82wjg6nvso17",
+    "scope": "javascript",
+    "prefix": "cs_公开_清除所有cookie",
+    "body": [
+      "const clearCookies = document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`));"
+    ],
+    "description": "清除所有cookie",
+    "create_date": "2025/1/15"
+  },
+  "p5zqfwubt9im1v4yes7x044": {
+    "id": "p5zqfwubt9im1v4yes7x044",
+    "scope": "javascript",
+    "prefix": "cs_公开_节流函数",
+    "body": [
+      "function throttle(func, wait, immediate) {",
+      "  let timeout, lastTime = 0;",
+      "",
+      "  return function(...args) {",
+      "    const now = Date.now();",
+      "",
+      "    if (immediate && now - lastTime >= wait) {",
+      "      func.apply(this, args);",
+      "      lastTime = now;",
+      "    } else {",
+      "      clearTimeout(timeout);",
+      "      timeout = setTimeout(() => {",
+      "        if (!immediate) {",
+      "          func.apply(this, args);",
+      "        }",
+      "        lastTime = Date.now();",
+      "      }, wait);",
+      "    }",
+      "  };",
+      "}"
+    ],
+    "description": "节流函数",
+    "create_date": "2025/1/15"
+  },
+  "6i7104593stxh2ewaocdk32": {
+    "id": "6i7104593stxh2ewaocdk32",
+    "scope": "javascript",
+    "prefix": "cs_公开_截断字符串",
+    "body": [
+      "const truncateString = (string, length) => string.length < length ? string : `${string.slice(0, length - 3)}...`;",
+      "",
+      "truncateString('Hi, I should be truncated because I am too loooong!', 36)   // 'Hi, I should be truncated because...'"
+    ],
+    "description": "截断字符串",
+    "create_date": "2025/1/15"
+  },
+  "1hrmnv7zd5cox3t26pglq38": {
+    "id": "1hrmnv7zd5cox3t26pglq38",
+    "scope": "javascript",
+    "prefix": "cs_公开_时间格式化",
+    "body": [
+      "const timeFromDate = date => date.toTimeString().slice(0, 8);",
+      "    ",
+      "timeFromDate(new Date(2021, 11, 2, 12, 30, 0));  // 12:30:00",
+      "timeFromDate(new Date());  // 返回当前时间 09:00:00"
+    ],
+    "description": "该方法可以用于将时间转化为hour:minutes:seconds的格式",
+    "create_date": "2025/1/15"
+  },
+  "d1hv56pl7yqzubjit0cf337": {
+    "id": "d1hv56pl7yqzubjit0cf337",
+    "scope": "javascript",
+    "prefix": "cs_公开_复制内容到剪切板（老版本）",
+    "body": [
+      "function copyToClipboard(text) {",
+      "  const textArea = document.createElement('textarea');",
+      "  textArea.value = text;",
+      "  document.body.appendChild(textArea);",
+      "  textArea.select();",
+      "  document.execCommand('copy');",
+      "  document.body.removeChild(textArea);",
+      "}",
+      "",
+      "copyToClipboard('要复制的内容');"
+    ],
+    "description": "复制内容到剪切板",
+    "create_date": "2025/1/15"
+  },
+  "5orkeu36bjnvdpyfw87tl27": {
+    "id": "5orkeu36bjnvdpyfw87tl27",
+    "scope": "javascript",
+    "prefix": "cs_公开_防抖函数",
+    "body": [
+      "function debounce(func, wait, immediate) {",
+      "  let timeout;",
+      "",
+      "  return function(...args) {",
+      "    const later = () => {",
+      "      timeout = null;",
+      "      if (!immediate) {",
+      "        func.apply(this, args);",
+      "      }",
+      "    };",
+      "",
+      "    const callNow = immediate && !timeout;",
+      "    clearTimeout(timeout);",
+      "    timeout = setTimeout(later, wait);",
+      "",
+      "    if (callNow) {",
+      "      func.apply(this, args);",
+      "    }",
+      "  };",
+      "}"
+    ],
+    "description": "防抖函数",
+    "create_date": "2025/1/15"
+  },
+  "xds9tlnce6hz5g4r3awv731": {
+    "id": "xds9tlnce6hz5g4r3awv731",
+    "scope": "javascript",
+    "prefix": "cs_公开_计算两个日期之间的间隔",
+    "body": [
+      "const dayDif = (date1, date2) => Math.ceil(Math.abs(date1.getTime() - date2.getTime()) / 86400000)",
+      "    ",
+      "dayDif(new Date(\"2021-11-3\"), new Date(\"2022-2-1\"))  // 90"
+    ],
+    "description": "计算两个日期之间的间隔",
+    "create_date": "2025/1/15"
+  },
+  "qr3t7ub8p4wgf1oyalc9011": {
+    "id": "qr3t7ub8p4wgf1oyalc9011",
+    "scope": "javascript",
+    "prefix": "cs_公开_复制内容到剪切板（新版本）",
+    "body": [
+      "const copyToClipboard = (text) => navigator.clipboard.writeText(text);",
+      "",
+      "copyToClipboard(\"Hello World\");"
+    ],
+    "description": "复制内容到剪切板",
+    "create_date": "2025/1/15"
+  }
+}

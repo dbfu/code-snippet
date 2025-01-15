@@ -4,7 +4,7 @@
 	"description": "帮助你管理代码片段",
 	"publisher": "dbfu321",
 	"icon": "code.png",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"keywords": [
 		"code-snippet",
 		"snippet",
@@ -278,12 +278,12 @@
 	"devDependencies": {
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.0",
-		"@types/node": "14.x",
-		"@types/vscode": "^1.96.0",
+		"@types/node": "16.x",
+		"@types/vscode": "^1.91.0",
 		"@vscode/test-electron": "^2.1.2",
 		"eslint": "^8.9.0",
 		"glob": "^7.2.0",
-		"mocha": "^9.2.1",
+		"mocha": "^11.0.1",
 		"typescript": "^4.5.5"
 	},
 	"dependencies": {
