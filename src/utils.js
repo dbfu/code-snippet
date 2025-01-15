@@ -39,13 +39,12 @@ const genCodeSnippetFile = (data, prefix, filePath, context) => {
 
   Object.keys(data).forEach(key => {
     data[key].forEach((item) => {
-      const { id, languageId, code, description, fileName } = item;
+      const { id, code, description, fileName } = item;
 
       const codeArr = code.split('\n');
 
       newData[id] = {
         id,
-        scope: languageId,
         prefix: prefix + fileName,
         body: codeArr,
         description,
@@ -74,11 +73,10 @@ const genTeamCodeSnippetFile = async (teams, getCodeSnippets, context) => {
     const data = await getCodeSnippets(element.token);
     Object.keys(data).forEach(key => {
       data[key].forEach((item) => {
-        const { id, languageId, code, description, fileName } = item;
+        const { id, code, description, fileName } = item;
         const codeArr = code.split('\n');
         newData[element.name + '-' + id] = {
           id,
-          scope: languageId,
           prefix: `cs_${element.name}_` + fileName,
           body: codeArr,
           description,
