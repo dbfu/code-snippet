@@ -266,7 +266,10 @@ class CommandManager {
     try {
       let { data: snippet } = await getCodeSnippetById(item.id, item.token);
       snippet = getCodeSnippetInfo(snippet);
-      await activeTextEditor.insertSnippet(new vscode.SnippetString(snippet.code), cursorPosition);
+      await activeTextEditor.insertSnippet(
+        new vscode.SnippetString(snippet.code),
+        cursorPosition
+      );
       vscode.window.showInformationMessage('代码片段已插入到光标位置');
     } catch (error) {
       vscode.window.showErrorMessage(error.message);

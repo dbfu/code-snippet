@@ -36,7 +36,14 @@ const getCodeSnippets = async (token) => {
   return group;
 }
 
-const createCodeSnippet = (name, code, type, description, token) => {
+// 创建代码片段
+const createCodeSnippet = (
+  name,
+  code,
+  type,
+  description,
+  token
+) => {
   return request.post('/', {
     access_token: token,
     files: {

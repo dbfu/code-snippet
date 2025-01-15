@@ -36,10 +36,12 @@ function activate(context) {
 
 
 	vscode.workspace.onDidChangeConfiguration(async e => {
+		// 检测个人令牌配置变更
 		if (!e.affectsConfiguration('personal.gitee.token')) return;
 
 		personalToken = getPersonalToken();
 		vscode.commands.executeCommand('setContext', 'personalToken', !!personalToken);
+		
 		personalTreeViewProvider.refresh();
 
 		if (!personalToken) {
