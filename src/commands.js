@@ -189,7 +189,7 @@ class CommandManager {
     );
 
     const value = await vscode.window.showInformationMessage(
-      message || '个人代码片段文件生成成功，刷新vscode后生效。',
+      message && typeof message === 'string' ? message : '个人代码片段文件生成成功，刷新vscode后生效。',
       {
         modal: true
       },
